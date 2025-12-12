@@ -146,6 +146,22 @@ What makes this particularly horrifying is that it exists in **both** the restau
 
 The fact that code this dangerous made it into production shows a complete lack of security review, testing, or basic competence. This isn't just bad coding - it's serious negligence.
 
+## And It Gets Worse: Order Receipts in the Web Root
+
+But wait, there's more! As if the RCE vulnerability wasn't enough, we discovered yet another security disaster that exposes customer data directly to the internet.
+
+The main platform (netuptakeaway.de) stores order receipts as plain text files in the web root with predictable filenames like `[ORDER_ID]receipt.txt`. Anyone who can guess an order ID can access complete order details from ANY restaurant using the platform, including:
+
+- Customer names and contact information
+- Complete order contents and prices
+- Delivery addresses
+- Payment information
+- Order timestamps
+
+The files are stored in publicly accessible directories on the main platform like `/P[REDACTED]/OrderFiles/` with URLs that are easily guessable and indexable by search engines. This means customer order data from ALL restaurants using the platform is essentially public domain - no authentication required, no hacking needed, just simple URL enumeration of the main platform.
+
+This isn't just a vulnerability; it's a complete failure to understand basic web security principles. Sensitive customer data should never be stored in web-accessible directories, especially with predictable filenames.
+
 ## What Should Happen Now
 
 **The Karvi Solutions restaurant ordering platform must be immediately shut down.**
