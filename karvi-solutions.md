@@ -150,7 +150,7 @@ The fact that code this dangerous made it into production shows a complete lack 
 
 But wait, there's more! As if the RCE vulnerability wasn't enough, we discovered yet another security disaster that exposes customer data directly to the internet.
 
-The main platform (netuptakeaway.de) stores order receipts as plain text files in the web root with predictable filenames like `[ORDER_ID]receipt.txt`. Anyone who can guess an order ID can access complete order details from ANY restaurant using the platform, including:
+The main platform (netuptakeaway.de) stores order receipts as plain text files in the web root with predictable filenames like `[REST_ID]receipt.txt`. Anyone who can guess an order ID can access complete order details from ANY restaurant using the platform, including:
 
 - Customer names and contact information
 - Complete order contents and prices
