@@ -162,6 +162,16 @@ The files are stored in publicly accessible directories on the main platform lik
 
 This isn't just a vulnerability; it's a complete failure to understand basic web security principles. Sensitive customer data should never be stored in web-accessible directories, especially with predictable filenames.
 
+## The Shared Host Nightmare
+
+We've been asked to confirm claims circulating that around 350 restaurants are affected by this security catastrophe. **Let us be crystal clear: this narrative is fundamentally misleading.**
+
+Here's what our analysis reveals: the "350" number refers to restaurants on one specific shared host where hundreds of restaurants all use the **exact same database with identical credentials**. A single database breach gives attackers access to every restaurant's data on that particular host.
+
+But the nightmare doesn't stop there. We've identified other shared hosts with the same architecture - multiple hosting environments each running vulnerable versions of the application. Some hosts run slightly "newer" versions that were clearly "improved" using AI, evidenced by cringe-inducing comments like `// ✅ <something only an AI would comment>`.
+
+The result? Predictably catastrophic. The AI-"enhanced" version introduces **brand new SQL injection vulnerabilities** on top of the existing ones. So we're not looking at one compromised host - we're looking at multiple shared hosts, each with identical fundamental vulnerabilities, some with additional AI-generated security holes.
+
 ## What Should Happen Now
 
 **The Karvi Solutions restaurant ordering platform must be immediately shut down.**
