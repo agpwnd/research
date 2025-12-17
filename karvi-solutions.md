@@ -172,6 +172,10 @@ But the nightmare doesn't stop there. We've identified other shared hosts with t
 
 The result? Predictably catastrophic. The AI-"enhanced" version introduces **brand new SQL injection vulnerabilities** on top of the existing ones. So we're not looking at one compromised host - we're looking at multiple shared hosts, each with identical fundamental vulnerabilities, some with additional AI-generated security holes.
 
+## Thoughts
+
+- "Order IDs tell stories in the AI based review systems - sometimes more than intended."
+
 ## What Should Happen Now
 
 **The Karvi Solutions restaurant ordering platform must be immediately shut down.**
