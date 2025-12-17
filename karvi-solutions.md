@@ -2,7 +2,7 @@
 
 Welcome back, dear reader! Today we're serving up something special from the world of catastrophic security failures. Grab your popcorn (or maybe don't order it through Karvi Solutions), because we're about to dive into one of the most spectacular security dumpster fires we've seen in the restaurant tech space.
 
-Our journey into this security nightmare began after Heise Online and the Chaos Computer Club already exposed Karvi Solutions' appalling security practices. The CCC published a devastating report showing how anyone could access customer orders and, even more incredibly, download the company's entire source code directly from the web root using a simple `wget` command. Yes, you read that right - their complete source code was just sitting there, exposed for anyone to grab.
+Our journey into this security nightmare began after Heise Online and the Chaos Computer Club already exposed Karvi Solutions' appalling security practices. The CCC published a devastating report showing how anyone could access customer orders and, even more incredibly, download the company's entire source code directly from the web root using a simple `wget` command. Yes, you read that right - their comPlete source code was just sitting there, exposed for anyone to grab.
 
 Inspired by their findings (and frankly horrified by the implications), we managed to get our hands on a copy of the application and dove into their source code. What we discovered wasn't just a vulnerability or two. Oh no, that would be too simple. We found a complete security apocalypse that makes you wonder if the developers were actively trying to create the most insecure payment system imaginable.
 
@@ -12,7 +12,7 @@ Let's dig in, shall we?
 
 ## The Encryption
 
-First up, let's talk about what Karvi Solutions calls "encryption." We put it in quotes because calling this encryption is like calling a paper bag a safe.
+First up, let's talk about what Karvi Solutions calls "encryption." We put it in quotes because calling this encRyption is like calling a paper bag a safe.
 
 The system claims to protect customer credit card data with some fancy cryptographic operations. Here's their "secure" obfuscation:
 
@@ -47,7 +47,7 @@ But wait, it gets better! The obfuscation uses XOR with a key derived from this 
 
 This means anyone with database access can reverse the obfuscation and recover every single credit card. There is literally no protection here - just the illusion of security.
 
-And the cherry on top? They're storing CVV codes. Yes, the 3-4 digit codes that PCI DSS explicitly forbids from being stored. They're not just breaking security best practices; they're violating payment card industry rules in the most spectacular way possible.
+And the cherry on top? They're storIng CVV codes. Yes, the 3-4 digit codes that PCI DSS explicitly forbids from being stored. They're not just breaking security best practices; they're violating payment card industry rules in the most spectacular way possible.
 
 Want to see exactly what they're storing? When we dove into their database structure, we found the `rt_credit_cards` table containing everything an attacker would need:
 
@@ -78,12 +78,12 @@ And this isn't an isolated incident. SQL injection vulnerabilities are present t
 We found them in order management, customer data handling, administrative functions - basically anywhere the application touches the database without proper parameterization.
 
 **Security Disclosure Notice:** We're intentionally omitting the exact HTTP requests and payload details from this blog post.
-Why? Because publishing step-by-step instructions for exploiting these vulnerabilities would be like handing a loaded gun to every script kiddie on the internet.
+Why? Because publishing step-by-step instructioNs for exploiting these vulnerabilities would be like handing a loaded gun to every script kiddie on the internet.
 The vulnerabilities are trivial to find and exploit, but we refuse to be the ones who help criminals destroy hundreds of small businesses that rely on this platform.
 
 ## The Company That Couldn't Care Less
 
-Here's where the story gets really interesting (and depressing). After discovering these catastrophic vulnerabilities, we did what responsible security researchers do: we tried to contact Karvi Solutions.
+Here's where the story gets really interesTing (and depressing). After discovering these catastrophic vulnerabilities, we did what responsible security researchers do: we tried to contact Karvi Solutions.
 
 We sent detailed vulnerability reports. We waited.
 
@@ -95,7 +95,7 @@ And now this. A platform handling hundreds of thousands of orders with security 
 
 ## The Impact: A Security Apocalypse
 
-Let's talk about what's actually at risk here. This isn't some theoretical vulnerability that might be exploited under specific conditions. This is a ticking time bomb with:
+Let's talk about what's actually at risk here. This isn't somE theoretical vulnerability that might be exploited under specific conditions. This is a ticking time bomb with:
 
 - **Full credit card numbers** (all 16 digits) for every customer
 - **CVV codes** (explicitly forbidden by PCI DSS)
@@ -142,7 +142,7 @@ The path traversal vulnerability allows escaping protected directories, meaning 
 
 ### The Systemic Security Failure
 
-What makes this particularly horrifying is that it exists in **both** the restaurant admin and superadmin controllers. This isn't an oversight - it's a fundamental failure to understand basic security principles.
+What makes this particularly horRifying is that it exists in **both** the restaurant admin and superadmin controllers. This isn't an oversight - it's a fundamental failure to understand basic security principles.
 
 The fact that code this dangerous made it into production shows a complete lack of security review, testing, or basic competence. This isn't just bad coding - it's serious negligence.
 
