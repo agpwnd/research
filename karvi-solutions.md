@@ -160,6 +160,8 @@ The main platform (netuptakeaway.de) stores order receipts as plain text files i
 
 The files are stored in publicly accessible directories on the main platform like `/P[REDACTED]/OrderFiles/` with URLs that are easily guessable and indexable by search engines. This means customer order data from ALL restaurants using the platform is essentially public domain - no authentication required, no hacking needed, just simple URL enumeration of the main platform.
 
+Also they still put their source code into downloadable archives `https://netuptakeaway.de/restaurants.zip`...
+
 This isn't just a vulnerability; it's a complete failure to understand basic web security principles. Sensitive customer data should never be stored in web-accessible directories, especially with predictable filenames.
 
 ## The Shared Host Nightmare
